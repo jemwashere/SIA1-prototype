@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li onclick="showSection('students')">Students</li>
+      <li onclick="showSection('events')">Events</li>
+      <li onclick="showSection('fees')">Fees</li>
+      <li onclick="showSection('about')">About</li>
+      <li class="logout" onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+
+            <!-- Students -->
+        <section id="students" class="section active">
+          <h1>Student Management</h1>
+
+          <form onsubmit="addStudent(event)">
+            <input type="text" placeholder="Student ID" required>
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="Course (BSIT/BSCS/BSIS)" required>
+            <input type="text" placeholder="Year & Section" required>
+            <button>Add Student</button>
+          </form>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Year/Section</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+              <input
+                  type="text"
+                  id="searchStudent"
+                  placeholder="Search Student ID..."
+                  onkeyup="searchStudentById()"
+                > <br><br>
+
+
+            <tbody id="studentTable">
+              <tr>
+                <td>2023-001</td>
+                <td>Juan Dela Cruz</td>
+                <td>BSIT</td>
+                <td>2A</td>
+                <td>
+                  <button onclick="editStudent(this)">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Events -->
+            <section id="events" class="section">
+              <h1>Event Management</h1>
+
+              <form onsubmit="addEvent(event)">
+                <input type="text" placeholder="Event Name" required>
+                <input type="number" placeholder="Number of Days" required>
+                <input type="number" placeholder="Morning Fee (₱)" required>
+                <input type="number" placeholder="Afternoon Fee (₱)" required>
+                <input type="number" placeholder="Late Attendance Fee (₱)" required>
+                <button type="submit">Add Event</button>
+              </form>
+
+              <input
+                type="text"
+                id="searchEvent"
+                placeholder="Search Event Name..."
+                onkeyup="searchEventByName()"
+              > <br><br>  
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th>No. of Days</th>
+                    <th>Morning Fee (₱)</th>
+                    <th>Afternoon Fee (₱)</th>
+                    <th>Late Attendance Fee (₱)</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="eventTable"></tbody>
+              </table>
+
+            </section>
+
+      <!-- Fees -->
+      <section id="fees" class="section">
+        <h1>Fee Management</h1>
+
+        <form onsubmit="addFee(event)">
+          <input type="text" placeholder="Fee Description" required>
+          <input type="text" placeholder="Type" required>
+          <input type="number" placeholder="Amount (₱)" required>
+          <button type="submit">Add Fee</button>
+        </form>
+
+        <input
+                type="text"
+                id="searchFee"
+                placeholder="Search Fee Name..."
+                onkeyup="searchFeeByDescription()"
+        > <br><br>  
+
+
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Amount (₱)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="feeTable"></tbody>
+        </table>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <h1>About the System</h1>
+      <p>
+        This admin interface allows the administrator to manage students,
+        events, and fees for the Attendance and Fee Monitoring System.
+        All data displayed are for prototype demonstration purposes only.
+      </p>
+      <p><strong>Contact:</strong> cite-admin@nvsu.edu.ph</p>
+    </section>
+
+  </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
+
+
